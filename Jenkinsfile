@@ -23,6 +23,7 @@ pipeline{
                     cd html
                     sudo git init
                     sudo git remote add origin https://github.com/Jadesolax/devbroom.git
+                    sudo git pull origin master
                     sudo npm install
                     sudo PORT=3000 pm2 start ./bin/www
                     '''
