@@ -14,14 +14,13 @@ pipeline{
             steps{
                 echo "Production stage"
                 sh '''
-                    sudo ssh -i /var/lib/jenkins/jenkbroom.pem -t -o StrictHostKeyChecking=no ubuntu@ec2-18-133-123-222.eu-west-2.compute.amazonaws.com
-
-                    cd /var/www/
+                    sudo ssh -i /var/lib/jenkins/jenkbroom.pem -t -O StrictHostKeyChecking=no ubuntu@ec2-18-133-123-222.eu-west-2.compute.amazonaws.com
                     sudo pm2 kill
+                    cd /var/www/
                     sudo rm -rf html
                     sudo mkdir html
                     cd html
-                    sudo git init
+                    sudo git init   
                     sudo git remote add origin https://github.com/Jadesolax/devbroom.git
                     sudo git pull origin master
                     sudo npm install
@@ -29,5 +28,5 @@ pipeline{
                     '''
             }
         }
-    }
+    
 }
